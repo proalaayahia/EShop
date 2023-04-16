@@ -1,0 +1,10 @@
+﻿what is primitive obsession?
+it's an anti-pattern where you're using primitive types to represent complex values in your domain
+ex:
+using primitive types to represent entity identifiers such as Guid or int
+- a popular solution for solving primitive obsession with entity identifiers is using strongly typed Ids
+- we have to ensure that our class is strongly typed ,immutable and support structural equality so we can use records instead of classes as they support all of these things.
+- we can use third party lib like StronglyTypedId by androw lock.
+
+hints:
+anti-pattern:means that is commonly used and are not efficient or backfires on our technical proccesses.
