@@ -3,7 +3,7 @@ using EShop.Domain.Products;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace EShop.Infrastructure.Persistence.Configurations;
+namespace EShop.Infrastructure.Configurations;
 
 public class LineItemConfiguration : IEntityTypeConfiguration<LineItem>
 {

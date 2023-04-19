@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace EShop.Infrastructure.Persistence;
+namespace EShop.Infrastructure;
 
 internal class ApplicationDbContext : DbContext
 {
