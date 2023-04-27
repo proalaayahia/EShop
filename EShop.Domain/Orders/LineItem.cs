@@ -5,6 +5,7 @@ namespace EShop.Domain.Orders;
 public class LineItem
 {
     //we can make it private and create a factory method,...so here we make it internal so it is only callable from this assembly.
+    private LineItem() { }
     internal LineItem(LineItemId id, OrderId orderId, ProductId productId, Money price)
     {
         Id = id;

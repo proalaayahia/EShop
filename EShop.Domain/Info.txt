@@ -6,5 +6,12 @@ using primitive types to represent entity identifiers such as Guid or int
 - we have to ensure that our class is strongly typed ,immutable and support structural equality so we can use records instead of classes as they support all of these things.
 - we can use third party lib like StronglyTypedId by androw lock.
 
+to map our rich domain models to database with its aggregates and value objects we have to add our configurations for each aggregate in our domain assembly.
+
+Domain Events are records of something that has already occured in our system
+for example when we create order then we have
+- OrderCreatedDomainEvent
+
 hints:
 anti-pattern:means that is commonly used and are not efficient or backfires on our technical proccesses.
+

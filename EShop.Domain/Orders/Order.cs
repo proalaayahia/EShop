@@ -1,4 +1,6 @@
 ﻿using EShop.Domain.Customers;
+using EShop.Domain.DomainEvents;
+using EShop.Domain.Primitives;
 using EShop.Domain.Products;
 
 namespace EShop.Domain.Orders;
@@ -7,7 +9,7 @@ namespace EShop.Domain.Orders;
 //which encapsulate all of other entities and value objects belonging to that aggregate
 //encapsulate also means that other entities can not modified outside of the aggregate root
 //so that we have add method to add line item we can add one to remove and modify line items
-public class Order
+public sealed class Order : AggregateRoot
 {
     private readonly HashSet<LineItem> _lineItems = new();
     private Order() { }
@@ -26,10 +28,23 @@ public class Order
         };
         return order;
     }
+
+
     //and we replaced the previous parameter here that was Product with product id and money
-    public void Add(ProductId productId,Money price)
+    public void Add(ProductId productId, Money price)
     {
         var lineItem = new LineItem(new LineItemId(Guid.NewGuid()), Id, productId, price);
         _lineItems.Add(lineItem);
+        //raising domain event
+        RaiseDomainEvent(new LineItemAddedDomainEvent(Id));
+    }
+    public void RemoveLineItem(LineItemId lineItemId)
+    {
+        var lineItem = _lineItems.FirstOrDefault(li => li.Id == lineItemId);
+        if (lineItem is null)
+        {
+            return;
+        }
+        _lineItems.Remove(lineItem);
     }
 }

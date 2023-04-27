@@ -1,10 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using EShop.Infrastructure.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace EShop.Infrastructure;
 
-internal class ApplicationDbContext : DbContext
+public class ApplicationDbContext : DbContext, IApplicationDbContext
 {
-    public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
+    //public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { } //needs to be resolved in service provider
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
