@@ -17,7 +17,7 @@ public class LineItemConfiguration : IEntityTypeConfiguration<LineItem>
             .HasOne<Product>()
             .WithMany()
             .HasForeignKey(l => l.ProductId);
-            
+
         builder.OwnsOne(l => l.Price);
     }
 }
