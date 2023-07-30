@@ -3,4 +3,4 @@ using EShop.Domain.Primitives;
 
 namespace EShop.Domain.DomainEvents;
 
-public record LineItemAddedDomainEvent(OrderId orderId) : IDomainEvent;
+public sealed record LineItemAddedDomainEvent(OrderId orderId) : IDomainEvent;
