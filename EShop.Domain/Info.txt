@@ -15,3 +15,56 @@ for example when we create order then we have
 hints:
 anti-pattern:means that is commonly used and are not efficient or backfires on our technical proccesses.
 
+
+-in the case of removing line item from order we do not have to get the oreder with it's entire collection of line items 
+we can filter the include query while getting order from database to get the specified line item.
+
+>> you can see how this is much more performant than loading all of the LineItems from the database but it comes at the cost of 
+breaking the aggregate constrains because we are not loading the entire aggregate into memory when we want to complete this operation.
+
+>> we should be more pragmatic when implementing our application features even when applying domain driven desion principles.
+
+>> in this case we do not need to load the entire aggregate into memory to be able to perform a simple operation.
+
+>> we are defenitly making a trade-off here but we are doing it in favor of performance and i think this is a good decision for most of the application out there.
+
+In the context of Domain-Driven Design (DDD), addressing primitive obsessions involves creating rich domain models that encapsulate the core business logic and concepts. DDD encourages the use of domain entities, value objects, and aggregates to model the domain in a way that closely aligns with the business.
+
+Here are some strategies to solve primitive obsessions in the context of DDD:
+
+Identify Domain Entities and Value Objects:
+
+Entities: Identify entities in your domain that have a distinct identity and lifecycle. These are typically nouns representing real-world objects with a unique identity (e.g., Customer, Order).
+Value Objects: Identify concepts that don't have a distinct identity but are important for the business logic. Create value objects for these concepts (e.g., Money, Address).
+Encapsulate Behavior in Entities:
+
+Move behavior related to the entities into the entities themselves. This aligns with the DDD principle of placing behavior close to the data it operates on.
+Create Rich Value Objects:
+
+Enrich your value objects with behavior. Don't just represent data; include methods that operate on that data. For example, a Money value object could have methods for adding, subtracting, and formatting.
+Aggregate Root Design:
+
+Identify aggregates and aggregate roots to define the boundaries of consistency within your domain. Aggregate roots are responsible for ensuring the consistency of changes to the aggregate.
+Use Factories and Repositories:
+
+Use factories to create complex objects or aggregates, ensuring that the creation logic is encapsulated. Repositories can be used to retrieve and store aggregates.
+Avoid Anemic Domain Models:
+
+Anemic domain models occur when entities and value objects are used as mere data containers, with behavior placed outside the domain. Strive to create a rich domain model where behavior and data are tightly coupled.
+Model Ubiquitous Language:
+
+Use the language of the domain in your code. The code should reflect the terminology => (مصطلحات) used by domain experts. This helps bridge the communication gap between developers and domain experts.
+Apply Domain Events:
+
+Use domain events to model and communicate changes in the domain. Events can represent state transitions and trigger actions in other parts of the system.
+By following these strategies, you can address primitive obsessions in the context of DDD, creating a more expressive, maintainable, and closely aligned model of the business domain in your software. This approach helps in capturing the richness of the domain and fostering better collaboration between developers and domain experts.  
+omit this step  تخطي هذه الخطوة
+insane     مجنون
+ boost  يعزز
+using the backing field to access this navigation property ("backing field")=> is the private readonly hashset or list that he passes to the navigation readonlycollection
+grow exponentially ينمو بشكل كبير
+
+Cause Cartesian Explosion >> if a given blog has 10 posts and 10 contributors, the database returns 100 rows for that single blog solve: by using AsSplitQuery()
+primitives    ابتدائيون
+going to blow up سوف تنفجر
+

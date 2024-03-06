@@ -1,5 +1,5 @@
 ﻿using EShop.Domain.Orders;
-using EShop.Infrastructure.Interfaces;
+using EShop.Domain.Interfaces;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 

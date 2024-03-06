@@ -1,6 +1,6 @@
 ﻿using EShop.Domain.Customers;
 using EShop.Domain.Orders;
-using EShop.Infrastructure.Interfaces;
+using EShop.Domain.Interfaces;
 using MediatR;
 
 namespace EShop.Application.Orders.Create;

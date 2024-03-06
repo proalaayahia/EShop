@@ -9,12 +9,12 @@ namespace EShop.Domain.Orders;
 //which encapsulate all of other entities and value objects belonging to that aggregate
 //encapsulate also means that other entities can not modified outside of the aggregate root
 //so that we have add method to add line item we can add one to remove and modify line items
-public sealed class Order : AggregateRoot
+public sealed class Order //: AggregateRoot
 {
     private readonly HashSet<LineItem> _lineItems = new();
     private Order() { }
     public OrderId Id { get; private set; } = null!;
-    public CustomerId CustomerId { get; private set; }
+    public CustomerId CustomerId { get; private set; } = null!;
     public IReadOnlyList<LineItem>? LineItems => _lineItems.ToList();
     //encapsulate the adding or removing of line items
     //it makes our method signatures much more honset and one thing it also allows you to do is to remove dependencies on the actual entities
@@ -36,7 +36,7 @@ public sealed class Order : AggregateRoot
         var lineItem = new LineItem(new LineItemId(Guid.NewGuid()), Id, productId, price);
         _lineItems.Add(lineItem);
         //raising domain event
-        RaiseDomainEvent(new LineItemAddedDomainEvent(Id));
+        //RaiseDomainEvent(new LineItemAddedDomainEvent(Id));
     }
     public void RemoveLineItem(LineItemId lineItemId)
     {

@@ -1,4 +1,4 @@
-﻿using EShop.Infrastructure.Interfaces;
+﻿using EShop.Domain.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace EShop.Infrastructure;
